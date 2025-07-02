@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>موقع أسامة للمزرعة - جميع الحيوانات وتأثيرات الفواكه</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #e3f2f1 0%, #ffffff 100%);
+    min-height: 100vh;
+    color: #264653;
+    overflow-x: hidden;
+  }
+  header {
+    background: #2a9d8f;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(42,158,143,0.7);
+    animation: fadeInDown 1s ease forwards;
+  }
+  section {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: #ffffffcc;
+    border-radius: 18px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 25px rgba(42,158,143,0.15);
+  }
+  h2 {
+    text-align: center;
+    color: #264653;
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 2.2em;
+    animation: fadeInDown 1.3s ease forwards;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    direction: rtl;
+    margin-bottom: 40px;
+  }
+  th, td {
+    border: 1px solid #a7c7c4;
+    padding: 14px 12px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 1.05em;
+  }
+  th {
+    background-color: #2a9d8f;
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: #e0f2f1;
+  }
+  img {
+    max-width: 60px;
+    border-radius: 12px;
+    box-shadow: 0 3px 9px rgba(0,0,0,0.12);
+    vertical-align: middle;
+  }
+  a {
+    color: #2a9d8f;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* أنيميشن fadeInDown */
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    tr {
+      margin-bottom: 20px;
+      border: 1px solid #a7c7c4;
+      border-radius: 14px;
+      padding: 15px;
+      background: #f7fdfd;
+    }
+    td {
+      border: none;
+      position: relative;
+      padding-left: 55%;
+      text-align: right;
+      font-size: 1em;
+    }
+    td::before {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 45%;
+      white-space: nowrap;
+      font-weight: 700;
+      color: #2a9d8f;
+      font-size: 1em;
+    }
+    td:nth-of-type(1)::before { content: "الاسم"; }
+    td:nth-of-type(2)::before { content: "التصنيف"; }
+    td:nth-of-type(3)::before { content: "الميزة"; }
+    td:nth-of-type(4)::before { content: "الصورة"; }
+  }
+  /* ترحيب */
+  #welcome {
+    position: fixed;
+    top: 30%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: #2a9d8f;
+    color: white;
+    font-size: 2.8em;
+    padding: 30px 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #2a9d8f;
+    z-index: 9999;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: slideDown 1.5s ease forwards;
+  }
+  #welcome.hide {
+    animation: slideLeftFade 2s ease forwards;
+  }
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translate(50%, -150%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(50%, -50%);
+    }
+  }
+  @keyframes slideLeftFade {
+    0% {
+      opacity: 1;
+      transform: translate(50%, -50%) translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(50%, -50%) translateX(-450px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="welcome">
+  مرحباً بكم في موقع أسامة للمزرعة
+  <audio id="welcomeSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+</div>
+
+<header>موقع أسامة للمزرعة - جميع الحيوانات وتأثيرات الفواكه</header>
+
+<section>
+  <h2>الحيوانات حسب التصنيف والندرة</h2>
+  <table>
+    <thead>
+      <tr><th>الاسم</th><th>التصنيف</th><th>الميزة</th><th>الصورة</th></tr>
+    </thead>
+    <tbody>
+      <!-- Common Pets -->
+      <tr><td>🐇 Bunny</td><td>Common</td><td>يأكل الجزر ويبيعه بقيمة 1.5x كل 40 ثانية.</td><td><a href="https://growagarden.fandom.com/wiki/Bunny" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/bunny.png" alt="Bunny"></a></td></tr>
+      <tr><td>🐕 Dog</td><td>Common</td><td>فرصة 5% لحفر بذور عشوائية كل 60 ثانية.</td><td><a href="https://growagarden.fandom.com/wiki/Dog" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/dog.png" alt="Dog"></a></td></tr>
+      <tr><td>🐕‍🦺 Golden Lab</td><td>Common</td><td>فرصة 10% لحفر بذور عشوائية كل 60 ثانية.</td><td><a href="https://growagarden.fandom.com/wiki/Golden_Lab" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/golden_lab.png" alt="Golden Lab"></a></td></tr>
+      <tr><td>🐝 Bee</td><td>Common</td><td>كل 20 دقيقة يعطي تأثير Pollinated Mutation على نبات عشوائي.</td><td><a href="https://growagarden.fandom.com/wiki/Bee" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/bee.png" alt="Bee"></a></td></tr>
+      <tr><td>🐹 Brown Mouse</td><td>Common</td><td>يكسبك 750 نقطة خبرة كل 8 دقائق ويزيد ارتفاع القفز.</td><td><a href="https://growagarden.fandom.com/wiki/Brown_Mouse" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/brown_mouse.png" alt="Brown Mouse"></a></td></tr>
+      <tr><td>🐭 Grey Mouse</td><td>Common</td><td>يكسب نقاط خبرة ويزيد سرعة الحركة.</td><td><a href="https://growagarden.fandom.com/wiki/Grey_Mouse" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/grey_mouse.png" alt="Grey Mouse"></a></td></tr>
+      <tr><td>🐌 Snail</td><td>Common</td><td>فرصة 5% لسقوط بذور عند الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Snail" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/snail.png" alt="Snail"></a></td></tr>
+      <tr><td>🐜 Giant Ant</td><td>Common</td><td>فرصة 10% لتكرار المحصول عند الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Giant_Ant" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/giant_ant.png" alt="Giant Ant"></a></td></tr>
+      <tr><td>🦟 Dragonfly</td><td>Common</td><td>يحول فاكهة عشوائية إلى فاكهة ذهبية (Gold Mutation) كل 5 دقائق (20x قيمة).</td><td><a href="https://growagarden.fandom.com/wiki/Dragonfly" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/dragonfly.png" alt="Dragonfly"></a></td></tr>
+      <tr><td>🐿️ Squirrel</td><td>Common</td><td>عند زراعة بذرة، قد تعود إلى مخزونك (توفير البذور).</td><td><a href="https://growagarden.fandom.com/wiki/Squirrel" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/squirrel.png" alt="Squirrel"></a></td></tr>
+
+      <!-- Uncommon Pets -->
+      <tr><td>🐇 Black Bunny</td><td>Uncommon</td><td>يأكل الجزر ويبيعه بقيمة 1.5x مع مضاعف أعلى.</td><td><a href="https://growagarden.fandom.com/wiki/Black_Bunny" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/black_bunny.png" alt="Black Bunny"></a></td></tr>
+      <tr><td>🐈 Cat</td><td>Uncommon</td><td>ينام كل 80 ثانية ويجعل الفواكه ضمن 10 أمتار تنمو 1.25x.</td><td><a href="https://growagarden.fandom.com/wiki/Cat" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/cat.png" alt="Cat"></a></td></tr>
+      <tr><td>🐔 Chicken</td><td>Uncommon</td><td>يزيد سرعة فقس البيض بنسبة 10%.</td><td><a href="https://growagarden.fandom.com/wiki/Chicken" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/chicken.png" alt="Chicken"></a></td></tr>
+      <tr><td>🦌 Deer</td><td>Uncommon</td><td>فرصة 3% لبقاء التوت بعد الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Deer" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/deer.png" alt="Deer"></a></td></tr>
+
+      <!-- Rare Pets -->
+      <tr><td>🦔 Hedgehog</td><td>Rare</td><td>يزيد حجم الفواكه الشوكية مثل الصبار والدوريان بنسبة 1.51x.</td><td><a href="https://growagarden.fandom.com/wiki/Hedgehog" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/hedgehog.png" alt="Hedgehog"></a></td></tr>
+      <tr><td>🥝 Kiwi</td><td>Rare</td><td>يقلل وقت فقس البيض.</td><td><a href="https://growagarden.fandom.com/wiki/Kiwi" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/kiwi.png" alt="Kiwi"></a></td></tr>
+      <tr><td>🐒 Monkey</td><td>Rare</td><td>فرصة لاسترجاع الفواكه عند البيع.</td><td><a href="https://growagarden.fandom.com/wiki/Monkey" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/monkey.png" alt="Monkey"></a></td></tr>
+      <tr><td>🐈 Orange Tabby</td><td>Rare</td><td>نسخة محسنة من القط، نوم أطول ونطاق تأثير أوسع (15 متر).</td><td><a href="https://growagarden.fandom.com/wiki/Orange_Tabby" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/orange_tabby.png" alt="Orange Tabby"></a></td></tr>
+      <tr><td>🐖 Pig</td><td>Rare</td><td>فرصة لتحويل الفواكه القريبة إلى طفرات (Mutations).</td><td><a href="https://growagarden.fandom.com/wiki/Pig" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/pig.png" alt="Pig"></a></td></tr>
+      <tr><td>🐓 Rooster</td><td>Rare</td><td>يزيد سرعة فقس البيض بنسبة 10%.</td><td><a href="https://growagarden.fandom.com/wiki/Rooster" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/rooster.png" alt="Rooster"></a></td></tr>
+      <tr><td>🦌 Spotted Deer</td><td>Rare</td><td>نسخة محسنة من الغزال، تزيد فرصة بقاء التوت بعد الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Spotted_Deer" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/spotted_deer.png" alt="Spotted Deer"></a></td></tr>
+
+      <!-- Legendary Pets -->
+      <tr><td>🩸 Blood Hedgehog</td><td>Legendary</td><td>يزيد من حجم الفواكه الشوكية أكثر.</td><td><a href="https://growagarden.fandom.com/wiki/Blood_Hedgehog" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/blood_hedgehog.png" alt="Blood Hedgehog"></a></td></tr>
+      <tr><td>🩸 Blood Kiwi</td><td>Legendary</td><td>يزيد من سرعة فقس البيض.</td><td><a href="https://growagarden.fandom.com/wiki/Blood_Kiwi" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/blood_kiwi.png" alt="Blood Kiwi"></a></td></tr>
+      <tr><td>🐄 Cow</td><td>Legendary</td><td>يسرع نمو النباتات القريبة.</td><td><a href="https://growagarden.fandom.com/wiki/Cow" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/cow.png" alt="Cow"></a></td></tr>
+      <tr><td>🐸 Frog</td><td>Legendary</td><td>يضيف تأثير عشوائي على فاكهة كل فترة.</td><td><a href="https://growagarden.fandom.com/wiki/Frog" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/frog.png" alt="Frog"></a></td></tr>
+      <tr><td>🐀 Mole</td><td>Legendary</td><td>يحفر كل 80 ثانية ليجد معدات مجانية أو عملة اللعبة (Sheckles).</td><td><a href="https://growagarden.fandom.com/wiki/Mole" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/mole.png" alt="Mole"></a></td></tr>
+      <tr><td>🌙 Moon Cat</td><td>Legendary</td><td>يزيد حجم الفواكه ويحافظ على بعض النباتات الخاصة بعد الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Moon_Cat" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/moon_cat.png" alt="Moon Cat"></a></td></tr>
+      <tr><td>🐼 Panda</td><td>Legendary</td><td>يزيد من قيمة نباتات البامبو.</td><td><a href="https://growagarden.fandom.com/wiki/Panda" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/panda.png" alt="Panda"></a></td></tr>
+      <tr><td>🐻 Polar Bear</td><td>Legendary</td><td>فرصة 10% لتحويل الفواكه إلى تأثيرات Chilled أو Frozen.</td><td><a href="https://growagarden.fandom.com/wiki/Polar_Bear" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/polar_bear.png" alt="Polar Bear"></a></td></tr>
+      <tr><td>🦦 Sea Otter</td><td>Legendary</td><td>يساعد في ري النباتات القريبة.</td><td><a href="https://growagarden.fandom.com/wiki/Sea_Otter" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/sea_otter.png" alt="Sea Otter"></a></td></tr>
+      <tr><td>🐒 Silver Monkey</td><td>Legendary</td><td>نسخة نادرة من القرد، لها تأثيرات محسنة.</td><td><a href="https://growagarden.fandom.com/wiki/Silver_Monkey" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/silver_monkey.png" alt="Silver Monkey"></a></td></tr>
+      <tr><td>🐢 Turtle</td><td>Legendary</td><td>يزيد مدة عمل الرشاشات (Sprinklers).</td><td><a href="https://growagarden.fandom.com/wiki/Turtle" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/turtle.png" alt="Turtle"></a></td></tr>
+
+      <!-- Mythical Pets -->
+      <tr><td>🐹 Brown Mouse</td><td>Mythical</td><td>يسمح لك بكسب نقاط خبرة إضافية وزيادة ارتفاع القفز.</td><td><a href="https://growagarden.fandom.com/wiki/Brown_Mouse" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/brown_mouse.png" alt="Brown Mouse"></a></td></tr>
+      <tr><td>🐛 Caterpillar</td><td>Mythical</td><td>يسرع نمو النباتات الورقية.</td><td><a href="https://growagarden.fandom.com/wiki/Caterpillar" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/caterpillar.png" alt="Caterpillar"></a></td></tr>
+      <tr><td>🐸 Echo Frog</td><td>Mythical</td><td>كل 15 دقيقة يمنح تأثير نمو قوي لفاكهة عشوائية.</td><td><a href="https://growagarden.fandom.com/wiki/Echo_Frog" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/echo_frog.png" alt="Echo Frog"></a></td></tr>
+      <tr><td>🐜 Red Giant Ant</td><td>Mythical</td><td>فرصة 5% لتكرار المحصول (خاصة التوت والفواكه الشائعة).</td><td><a href="https://growagarden.fandom.com/wiki/Red_Giant_Ant" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/red_giant_ant.png" alt="Red Giant Ant"></a></td></tr>
+      <tr><td>🦉 Owl</td><td>Mythical</td><td>يزيد نقاط الخبرة لجميع الحيوانات النشطة بنسبة 20%.</td><td><a href="https://growagarden.fandom.com/wiki/Owl" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/owl.png" alt="Owl"></a></td></tr>
+      <tr><td>🦦 Meerkat</td><td>Mythical</td><td>يقلل وقت إعادة شحن بعض الحيوانات.</td><td><a href="https://growagarden.fandom.com/wiki/Meerkat" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/meerkat.png" alt="Meerkat"></a></td></tr>
+      <tr><td>🦊 Red Fox</td><td>Mythical</td><td>يسرق بذورًا من مزارع اللاعبين الآخرين.</td><td><a href="https://growagarden.fandom.com/wiki/Red_Fox" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/red_fox.png" alt="Red Fox"></a></td></tr>
+      <tr><td>🐀 Snail</td><td>Mythical</td><td>فرصة 5% لسقوط بذور عند الحصاد.</td><td><a href="https://growagarden.fandom.com/wiki/Snail" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/snail.png" alt="Snail"></a></td></tr>
+      <tr><td>🐿️ Squirrel</td><td>Mythical</td><td>عند زراعة بذرة، قد تعود إلى مخزونك (توفير البذور).</td><td><a href="https://growagarden.fandom.com/wiki/Squirrel" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/squirrel.png" alt="Squirrel"></a></td></tr>
+      <tr><td>🦗 Praying Mantis</td><td>Mythical</td><td>يزيد من فرصة الطفرات (mutations) في الفواكه.</td><td><a href="https://growagarden.fandom.com/wiki/Praying_Mantis" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/praying_mantis.png" alt="Praying Mantis"></a></td></tr>
+
+      <!-- Divine Pets -->
+      <tr><td>🦉 Blood Owl</td><td>Divine</td><td>جميع الحيوانات النشطة تكسب نقاط خبرة إضافية.</td><td><a href="https://growagarden.fandom.com/wiki/Blood_Owl" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/blood_owl.png" alt="Blood Owl"></a></td></tr>
+      <tr><td>🪰 Dragonfly</td><td>Divine</td><td>يحول فاكهة عشوائية إلى فاكهة ذهبية (Gold Mutation).</td><td><a href="https://growagarden.fandom.com/wiki/Dragonfly" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/dragonfly.png" alt="Dragonfly"></a></td></tr>
+      <tr><td>🦝 Raccoon</td><td>Divine</td><td>يسرق فاكهة عشوائية من مزارع اللاعبين الآخرين.</td><td><a href="https://growagarden.fandom.com/wiki/Raccoon" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/raccoon.png" alt="Raccoon"></a></td></tr>
+      <tr><td>🦉 Night Owl</td><td>Divine</td><td>يزيد نقاط الخبرة لجميع الحيوانات بنسبة 23 نقطة.</td><td><a href="https://growagarden.fandom.com/wiki/Night_Owl" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/night_owl.png" alt="Night Owl"></a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>تأثيرات الفواكه (Fruit Effects)</h2>
+  <table>
+    <thead>
+      <tr><th>اسم التأثير</th><th>الوصف</th><th>مضاعف السعر</th><th>الصورة</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🍯 Honey Fruit</td><td>فاكهة تم تلقيحها من قبل النحل، تزيد من قيمتها.</td><td>1.5x</td><td><a href="https://growagarden.fandom.com/wiki/Honey_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/honey_fruit.png" alt="Honey Fruit"></a></td></tr>
+      <tr><td>🍬 Candy Fruit</td><td>فاكهة حلوى تعطي فرصة لتكرار الفاكهة عند الحصاد.</td><td>2x</td><td><a href="https://growagarden.fandom.com/wiki/Candy_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/candy_fruit.png" alt="Candy Fruit"></a></td></tr>
+      <tr><td>❄️ Chilled Fruit</td><td>فاكهة تعطي تأثير تبريد، تزيد من القيمة.</td><td>2x</td><td><a href="https://growagarden.fandom.com/wiki/Chilled_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/chilled_fruit.png" alt="Chilled Fruit"></a></td></tr>
+      <tr><td>🧊 Frozen Fruit</td><td>فاكهة تعطي تأثير تجميد قوي وقيمة مضاعفة.</td><td>10x</td><td><a href="https://growagarden.fandom.com/wiki/Frozen_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/frozen_fruit.png" alt="Frozen Fruit"></a></td></tr>
+      <tr><td>⚡ Shocked Fruit</td><td>فاكهة تعطي تأثير صدمة وقيمة مضاعفة.</td><td>50x</td><td><a href="https://growagarden.fandom.com/wiki/Shocked_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/shocked_fruit.png" alt="Shocked Fruit"></a></td></tr>
+      <tr><td>🎉 Disco Fruit</td><td>فاكهة تعطي تأثير ديسكو وقيمة مضاعفة.</td><td>10x</td><td><a href="https://growagarden.fandom.com/wiki/Disco_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/disco_fruit.png" alt="Disco Fruit"></a></td></tr>
+      <tr><td>🧟‍♂️ Zombified Fruit</td><td>فاكهة تعطي تأثير زومبي وقيمة مضاعفة.</td><td>25x</td><td><a href="https://growagarden.fandom.com/wiki/Zombified_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/zombified_fruit.png" alt="Zombified Fruit"></a></td></tr>
+      <tr><td>🌈 Rainbow Fruit</td><td>فاكهة تحتوي على 5 طفرات مختلفة (Rainbow Mutation).</td><td>100x</td><td><a href="https://growagarden.fandom.com/wiki/Rainbow_Fruit" target="_blank"><img src="https://static.wikia.nocookie.net/growagarden/images/rainbow_fruit.png" alt="Rainbow Fruit"></a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script>
+  const welcome = document.getElementById('welcome');
+  const sound = document.getElementById('welcomeSound');
+
+  window.onload = () => {
+    sound.play();
+    setTimeout(() => {
+      welcome.classList.add('hide');
+    }, 3500);
+  };
+</script>
+
+</body>
+</html>
